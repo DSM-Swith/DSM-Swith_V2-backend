@@ -1,13 +1,15 @@
-package com.swith.backend.domain.user.domain;
+package com.swith.backend.domain.friend.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-@EqualsAndHashCode
+@EqualsAndHashCode // 필수
 @Getter
+@NoArgsConstructor // 필수
 @AllArgsConstructor
 public class FriendId implements Serializable {
 

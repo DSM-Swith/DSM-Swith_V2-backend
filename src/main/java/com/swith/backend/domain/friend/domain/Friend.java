@@ -40,4 +40,9 @@ public class Friend {
 		this.status = null;
 	}
 
+	public Friend updateStatus() {
+		this.status = true;
+		return this;
+	}
+
 }

@@ -22,21 +22,21 @@ public class Friend {
 	@Id
 	@ManyToOne
 	@JoinColumn(nullable = false)
-	private User userId;
+	private User user; // 신청자
 
 	@Id
 	@ManyToOne
 	@JoinColumn(nullable = false)
-	private User friend;
+	private User friend; // 친구 관계 결정자
 
 	private Boolean status;
 	// 친구요청 수락시 true, 요청 대기시 false 로 설정, 거절시 테이블에서 삭제
 	// 요청 대기 친구와 수락된 친구가 같은 테이블에 존재
 
 	@Builder
-	public Friend(User userId, User friend) {
+	public Friend(User user, User friend) {
 		this.friend = friend;
-		this.userId = userId;
+		this.user = user;
 		this.status = null;
 	}
 

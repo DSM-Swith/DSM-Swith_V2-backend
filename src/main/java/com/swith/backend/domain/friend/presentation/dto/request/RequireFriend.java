@@ -8,13 +8,13 @@ import lombok.Getter;
 @Getter
 public class RequireFriend {
 
-    private String userId;
+    private String user;
 
     private String friend;
 
     public Friend toFriend(UserRepository userRepository) {
         return Friend.builder()
-                .userId(userRepository.findByUserId(this.userId)
+                .user(userRepository.findByUserId(this.user)
                         .orElseThrow(() -> {throw UserNotFoundException.EXCEPTION;
                 }))
                 .friend(userRepository.findByUserId(this.friend)

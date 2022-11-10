@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -26,24 +27,27 @@ public class FriendService {
 
     public void requestFriend(RequireFriend require) {
 
-        friendRepository.save(require.toFriend(userRepository));
+        friendRepository.save(Friend.builder()
+                .user(userRepository.findByUserId(require.getUser())
+                        .orElseThrow(() -> {throw UserNotFoundException.EXCEPTION;
+                        }))
+                .friend(userRepository.findByUserId(require.getFriend())
+                        .orElseThrow(() -> {throw UserNotFoundException.EXCEPTION;}))
+                .build());
     }
 
     public List<FriendList> friendList() {
         User user = authUtil.getUser();
-        List<Friend> list = friendRepository.findAllByUser(user);
-        List<FriendList> friendLists = new ArrayList<>();
-        for (Friend friend: list) {
-            FriendList tmp = FriendList.builder()
-                    .introduce(friend.getFriend().getIntroduce())
-                    .nickname(friend.getFriend().getNickname())
-                    .phoneNumber(friend.getFriend().getPhoneNumber())
-                    .build();
-            if (friend.getStatus() != null && friend.getStatus()) {
-                friendLists.add(tmp);
-            }
-        }
-        System.out.println(friendLists);
-        return friendLists;
+        return friendRepository.findAllByUserAndStatusIsNotNull(user)
+                .stream().map(
+                        friend -> {
+                            return FriendList.builder()
+                                    .introduce(friend.getFriend().getIntroduce())
+                                    .nickname(friend.getFriend().getNickname())
+                                    .phoneNumber(friend.getFriend().getPhoneNumber())
+                                    .status(friend.getStatus())
+                                    .build();
+                        }
+                ).collect(Collectors.toList());
     }
 }

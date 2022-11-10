@@ -16,4 +16,6 @@ public class FriendList {
     private String introduce;
 
     private String phoneNumber;
+
+    private Boolean status;
 }

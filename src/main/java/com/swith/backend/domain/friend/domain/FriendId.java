@@ -13,7 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class FriendId implements Serializable {
 
-    private Long userId;
+    private Long user;
 
     private Long friend;
 }

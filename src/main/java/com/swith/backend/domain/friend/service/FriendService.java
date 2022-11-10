@@ -28,10 +28,10 @@ public class FriendService {
     public void requestFriend(RequireFriend require) {
 
         friendRepository.save(Friend.builder()
-                .user(userRepository.findByUserId(require.getUser())
+                .user(userRepository.findByUserId(authUtil.getUserId())
                         .orElseThrow(() -> {throw UserNotFoundException.EXCEPTION;
                         }))
-                .friend(userRepository.findByUserId(require.getFriend())
+                .friend(userRepository.findByNumberAndNickname(require.getNumber(), require.getNickName())
                         .orElseThrow(() -> {throw UserNotFoundException.EXCEPTION;}))
                 .build());
     }

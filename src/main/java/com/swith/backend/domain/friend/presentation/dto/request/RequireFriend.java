@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public class RequireFriend {
 
-    private String user;
+    private String nickName;
 
-    private String friend;
+    private String number;
 }

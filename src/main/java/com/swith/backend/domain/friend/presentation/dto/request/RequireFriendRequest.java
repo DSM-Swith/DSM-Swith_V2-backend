@@ -3,7 +3,7 @@ package com.swith.backend.domain.friend.presentation.dto.request;
 import lombok.Getter;
 
 @Getter
-public class RequireFriend {
+public class RequireFriendRequest {
 
     private String nickName;
 

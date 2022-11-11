@@ -37,7 +37,7 @@ public class Friend {
 	public Friend(User user, User friend) {
 		this.friend = friend;
 		this.user = user;
-		this.status = null;
+		this.status = false;
 	}
 
 	public Friend updateStatus() {

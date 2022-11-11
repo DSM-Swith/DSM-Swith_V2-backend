@@ -1,15 +1,13 @@
 package com.swith.backend.domain.friend.presentation;
 
-import com.swith.backend.domain.friend.domain.Friend;
 import com.swith.backend.domain.friend.presentation.dto.request.DecideRequest;
-import com.swith.backend.domain.friend.presentation.dto.request.RequireFriend;
-import com.swith.backend.domain.friend.presentation.dto.response.DecideMessage;
-import com.swith.backend.domain.friend.presentation.dto.response.FriendList;
+import com.swith.backend.domain.friend.presentation.dto.request.RequireFriendRequest;
+import com.swith.backend.domain.friend.presentation.dto.response.FriendResponse;
 import com.swith.backend.domain.friend.service.FriendService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,17 +26,27 @@ public class FriendController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void requireFriend(@RequestBody @Valid RequireFriend require) {
+    public void requireFriend(@RequestBody @Valid RequireFriendRequest require) {
         friendService.requestFriend(require);
     }
 
-    @GetMapping("/list")
-    public List<FriendList> findAllFriendList() {
+    @GetMapping("/friend-list")
+    public List<FriendResponse> findAllFriendList() {
         return friendService.friendList();
     }
 
-    @PutMapping
-    public DecideMessage accept(@RequestBody DecideRequest decideRequest) {
-        return friendService.decideFriendReq(decideRequest);
+    @PutMapping("/accept")
+    public void accept(@RequestBody DecideRequest decideRequest) {
+        friendService.acceptFriendRequest(decideRequest);
+    }
+
+    @DeleteMapping("/reject")
+    public void reject(@RequestBody DecideRequest decideRequest) {
+        friendService.rejectFriendRequest(decideRequest);
+    }
+
+    @GetMapping("/request-list")
+    public List<FriendResponse> friendRequestList() {
+        return friendService.requestFriendList();
     }
 }

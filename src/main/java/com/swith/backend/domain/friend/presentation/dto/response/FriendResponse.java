@@ -9,13 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class FriendList {
+public class FriendResponse {
 
     private String nickname;
 
-    private String introduce;
-
-    private String phoneNumber;
-
-    private Boolean status;
+    private String path;
 }

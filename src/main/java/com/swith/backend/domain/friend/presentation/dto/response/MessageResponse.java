@@ -3,10 +3,10 @@ package com.swith.backend.domain.friend.presentation.dto.response;
 import lombok.Getter;
 
 @Getter
-public class DecideMessage {
+public class MessageResponse {
     private final String message;
 
-    public DecideMessage(String message) {
+    public MessageResponse(String message) {
         this.message = message;
     }
 }

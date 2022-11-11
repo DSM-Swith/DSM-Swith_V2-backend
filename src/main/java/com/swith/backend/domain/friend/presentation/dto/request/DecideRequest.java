@@ -6,6 +6,4 @@ import lombok.Getter;
 public class DecideRequest {
 
     private String userId;
-
-    private Boolean decide;
 }

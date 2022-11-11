@@ -2,6 +2,7 @@ package com.swith.backend.domain.auth.service;
 
 import javax.transaction.Transactional;
 
+import com.swith.backend.global.exception.PhoneNumberConflictException;
 import com.swith.backend.global.sms.utils.RandomCodeUtil;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,7 +36,7 @@ public class AuthService {
     @Transactional
     public void signUp(UserInfoRequest userInfoRequest) {
         if(userRepository.existsByPhoneNumber(userInfoRequest.getPhoneNumber())) {
-            throw IdConflictException.EXCEPTION;
+            throw PhoneNumberConflictException.EXCEPTION;
         }
 
         userRepository.save(User.builder()

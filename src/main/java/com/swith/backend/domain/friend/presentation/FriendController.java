@@ -30,7 +30,7 @@ public class FriendController {
         friendService.requestFriend(require);
     }
 
-    @GetMapping("/friend-list")
+    @GetMapping
     public List<FriendResponse> findAllFriendList() {
         return friendService.friendList();
     }
@@ -45,7 +45,7 @@ public class FriendController {
         friendService.rejectFriendRequest(decideRequest);
     }
 
-    @GetMapping("/request-list")
+    @GetMapping("/request")
     public List<FriendResponse> friendRequestList() {
         return friendService.requestFriendList();
     }

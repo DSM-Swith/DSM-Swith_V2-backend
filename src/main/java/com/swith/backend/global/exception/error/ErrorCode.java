@@ -18,7 +18,7 @@ public enum ErrorCode {
     TOKEN_UNAUTHORIZED(401, "토큰이 유효하지 않습니다."),
 
     ID_CONFLICT(409, "아이디가 중복되었습니다."),
-    PHONE_NUMBER_CONFLICT(409, "이메일이 중복되었습니다."),
+    PHONE_NUMBER_CONFLICT(409, "전화번호가 중복되었습니다."),
     PASSWORD_CONFLICT(409, "비밀번호가 일치하지 않습니다.");
 
     private final int status;

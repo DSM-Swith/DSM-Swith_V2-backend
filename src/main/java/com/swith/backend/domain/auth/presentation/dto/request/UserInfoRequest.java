@@ -25,9 +25,6 @@ public class UserInfoRequest {
     @Size(max = 13)
     private String phoneNumber;
 
-<<<<<<< HEAD
-=======
     @NotBlank
->>>>>>> main
     private String introduce;
 }

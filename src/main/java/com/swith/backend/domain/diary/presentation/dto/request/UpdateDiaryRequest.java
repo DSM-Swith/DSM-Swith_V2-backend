@@ -3,6 +3,8 @@ package com.swith.backend.domain.diary.presentation.dto.request;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.swith.backend.domain.diary.domain.type.Status;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -18,6 +20,6 @@ public class UpdateDiaryRequest {
 	@Size(max = 2000)
 	private String content;
 
-	private Boolean isStatus;
+	private Status status;
 
 }

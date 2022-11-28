@@ -1,17 +1,14 @@
 package com.swith.backend.domain.friend.presentation.dto.response;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Getter @Builder
 public class FriendResponse {
 
-    private String nickname;
+    //친구 신청 유저 정보
+    private final Long id;
+    private final String nickname;
+    private final String path;
 
-    private String path;
 }

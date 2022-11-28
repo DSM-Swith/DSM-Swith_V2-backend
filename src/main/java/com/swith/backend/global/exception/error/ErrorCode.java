@@ -20,6 +20,7 @@ public enum ErrorCode {
     ID_CONFLICT(409, "아이디가 중복되었습니다."),
     PHONE_NUMBER_CONFLICT(409, "전화번호가 중복되었습니다."),
     PASSWORD_CONFLICT(409, "비밀번호가 일치하지 않습니다.");
+    MY_DIARY_NOT_LIKE(409, "나의 diary에는 좋아요를 할 수 없습니다.");
 
     private final int status;
     private final String message;

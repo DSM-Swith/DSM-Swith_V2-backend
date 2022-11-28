@@ -52,7 +52,10 @@ public class DiaryService {
 		Diary diary = diaryRepository.findById(diaryId).orElseThrow(() -> DiaryNotFoundException.EXCEPTION);
 		diary.matchUserId(authUtil.getUser().getId());
 
+		List<Like> like = likeRepository.findByDiaryId(diaryId);
+
 		s3Util.delete(diary.getPath());
+		likeRepository.deleteAll(like);
 		diaryRepository.delete(diary);
 	}
 

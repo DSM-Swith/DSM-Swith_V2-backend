@@ -1,5 +1,6 @@
 package com.swith.backend.domain.diary.domain;
 
+import com.swith.backend.domain.diary.domain.type.Status;
 import com.swith.backend.global.entity.BaseTimeEntity;
 import com.swith.backend.global.exception.TokenUnauthorizedException;
 
@@ -47,9 +48,10 @@ public class Diary extends BaseTimeEntity {
         if(!this.userId.equals(userId)) throw TokenUnauthorizedException.EXCEPTION;
     }
 
-    public void update(String title, String content) {
+    public void update(String title, String content, Status status) {
         this.title = title;
         this.content = content;
+        this.status = status;
     }
 
 }

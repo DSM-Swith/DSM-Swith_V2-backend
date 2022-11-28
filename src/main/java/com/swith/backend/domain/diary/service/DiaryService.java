@@ -37,7 +37,7 @@ public class DiaryService {
 		Diary diary = diaryRepository.findById(diaryId).orElseThrow(() -> DiaryNotFoundException.EXCEPTION);
 		diary.matchUserId(authUtil.getUser().getId());
 
-		diary.update(request.getTitle(), request.getContent());
+		diary.update(request.getTitle(), request.getContent(), request.getStatus());
 		diaryRepository.save(diary);
 		return diary.getId();
 	}
